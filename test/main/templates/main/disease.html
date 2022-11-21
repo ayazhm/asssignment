@@ -1,0 +1,81 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Disease{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="first">
+        <div class="intro">
+            <h2>Diseases</h2>
+            <button type="button" class="btn btn-light btn_o" data-bs-toggle="modal" data-bs-target="#modal1">Add</button>
+        </div>
+        <table class="table table-light table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="center">#</th>
+              <th scope="col">ID</th>
+              <th scope="col">Disease code</th>
+              <th scope="col">Pathogen</th>
+              <th scope="col">Description</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for tuple in query %}
+            <tr>
+              <td class="center">{{forloop.counter}}</td>
+              <td>{{tuple.id}}</td>
+              <td>{{tuple.disease_code}}</td>
+              <td>{{tuple.pathogen}}</td>
+              <td>{{tuple.description}}</td>
+              <td>
+                  <a href="/update_disease/{{tuple.disease_code}}"><img src="{% static 'main/img/pencil-square.svg' %}" alt="edit" class="opacity"></a>
+              </td>
+              <td>
+                  <a href="/delete_disease/{{tuple.disease_code}}"><img  src="{% static 'main/img/x-square.svg' %}" alt="delete" class="opacity"></a>
+              </td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter disease information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/add_disease/" method="POST">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="code">Disease code</label>
+                  <input name="code" type="text" class="form-control" id="code" required>
+                </div>
+                <div class="form-group">
+                  <label for="pathogen">Pathogen</label>
+                  <input name="pathogen" type="text" class="form-control" id="pathogen"  required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input name="description" type="text" class="form-control" id="description"  required>
+                </div>
+                <div class="form-group">
+                  <label for="type">Disease ID</label>
+                  <input name="id" type="number" class="form-control" id="type">
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-light">Add tuple</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

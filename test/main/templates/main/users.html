@@ -1,0 +1,89 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Disease{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="first">
+        <div class="intro">
+            <h2>Users</h2>
+            <button type="button" class="btn btn-light btn_o" data-bs-toggle="modal" data-bs-target="#modal1">Add</button>
+        </div>
+        <table class="table table-light table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="center">#</th>
+              <th scope="col">Email address</th>
+              <th scope="col">Name</th>
+              <th scope="col">Surname</th>
+              <th scope="col">Salary</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Country Name</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for tuple in query %}
+            <tr>
+              <td class="center">{{forloop.counter}}</td>
+              <td>{{tuple.email}}</td>
+              <td>{{tuple.name}}</td>
+              <td>{{tuple.surname}}</td>
+              <td>{{tuple.salary}}</td>
+              <td>{{tuple.phone}}</td>
+              <td>{{tuple.cname}}</td>
+              <td>
+                  <a href="/update_user/{{tuple.email}}"><img src="{% static 'main/img/pencil-square.svg' %}" alt="edit" class="opacity"></a>
+              </td>
+              <td>
+                  <a href="/delete_user/{{tuple.email}}"><img src="{% static 'main/img/x-square.svg' %}" alt="delete" class="opacity"></a>
+              </td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter user information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/add_user/" method="POST">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input name="email" type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input name="name" type="text" class="form-control" id="name"  required>
+                </div>
+                <div class="form-group">
+                  <label for="surname">Surname</label>
+                  <input name="surname" type="text" class="form-control" id="surname"  required>
+                </div>
+                <div class="form-group">
+                  <label for="salary">Salary</label>
+                  <input name="salary" type="number" class="form-control" id="salary">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone number</label>
+                  <input name="phone" type="tel" class="form-control" id="phone"  required>
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-light">Add tuple</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+{% endblock %}
