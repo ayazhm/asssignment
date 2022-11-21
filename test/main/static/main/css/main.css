@@ -1,0 +1,93 @@
+body {
+    background: #2c2c2c;
+}
+
+aside{
+    float: left;
+    background: #363445;
+    width: 20%;
+    padding: 2.5%;
+    padding-top: 5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #5e569b;
+    position: fixed;
+    height: 740px;
+}
+aside .logo {
+    font-size: 35px;
+    font-weight: bold;
+    position: relative;
+    top: 12px;
+    margin-left: 5px;
+}
+
+aside .logo-link{
+    text-decoration: none;
+    color: white;
+}
+aside img{
+    width: 50px;
+    filter: brightness(0) invert(1);
+}
+
+aside h3{
+    margin-top: 55px;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+aside ul{
+    list-style: none;
+    padding-left: 50px;
+}
+
+aside ul li{
+    color: #fff;
+    display: block;
+    margin-top: 11px;
+    transition: transform .6s ease;
+}
+
+aside ul a{
+    text-decoration: none;
+}
+aside ul li:hover, aside ul a:hover{
+    color: #d2980d;
+    transform: scale(1.05);
+}
+
+aside .folder{
+    width: 17px;
+    margin-right: 9px;
+}
+.fol{
+    position: relative;
+    top: 2px;
+ }
+
+ main {
+    background: #e2e2e2;
+    min-height: 730px;
+    color: #fff;
+    padding-bottom: 20px;
+ }
+
+ .center{
+    text-align: center;
+ }
+
+.intro{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 24%;
+    width: 72%;
+}
+
+.nodeco{
+    text-decoration: none;
+    color: #363445;
+}
+.upd{
+    margin-left: 24%;
+    width: 72%;
+}

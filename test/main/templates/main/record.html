@@ -1,0 +1,47 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Disease{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="first">
+        <div class="intro">
+            <h2>Records</h2>
+            <button type="button" class="btn btn-light btn_o">Add</button>
+        </div>
+        <table class="table table-light table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="center">#</th>
+              <th scope="col">Email address</th>
+              <th scope="col">Country Name</th>
+              <th scope="col">Disease</th>
+              <th scope="col">Total patients</th>
+              <th scope="col">Total deaths</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for tuple in query %}
+            <tr>
+              <td class="center">{{forloop.counter}}</td>
+              <td>{{tuple.email}}</td>
+              <td>{{tuple.cname}}</td>
+              <td>{{tuple.disease_code}}</td>
+              <td>{{tuple.total_patients}}</td>
+              <td>{{tuple.total_deaths}}</td>
+              <td>
+                  <a href=""><img src="{% static 'main/img/pencil-square.svg' %}" alt="edit" class="opacity"></a>
+              </td>
+              <td>
+                  <a href=""><img src="{% static 'main/img/x-square.svg' %}" alt="delete" class="opacity"></a>
+              </td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% endblock %}

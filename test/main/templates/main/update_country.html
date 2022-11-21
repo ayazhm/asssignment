@@ -1,0 +1,21 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Disease type{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="first">
+        <div class="intro">
+            <h2>Update Country</h2>
+        </div>
+        <div class="upd">
+            <form actions="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br/>
+            <input type="submit" value="Update" class="btn btn-light">
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
