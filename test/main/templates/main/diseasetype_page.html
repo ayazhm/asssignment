@@ -1,0 +1,70 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Disease type{% endblock %}
+
+{% block content %}
+{% load static %}
+    <div class="first">
+        <div class="intro">
+            <h2>Disease Type</h2>
+            <button type="button" class="btn btn-light btn_o" data-bs-toggle="modal" data-bs-target="#modal1">Add</button>
+        </div>
+        <table class="table table-light table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="center">#</th>
+              <th scope="col" class="center">Disease ID</th>
+              <th scope="col">Description</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for tuple in queryset %}
+            <tr>
+              <td class="center">{{forloop.counter}}</td>
+              <td class="center" name="id">{{tuple.id}}</td>
+              <td>{{tuple.description}}</td>
+              <td>
+                  <a href="/update_type/{{tuple.id}}"><img src="{% static 'main/img/pencil-square.svg' %}" alt="edit" class="opacity"></a>
+              </td>
+              <td>
+                  <a href="/delete_type/{{tuple.id}}"><img  src="{% static 'main/img/x-square.svg' %}" alt="delete" class="opacity"></a>
+              </td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter disease type</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/add_type/" method="POST">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Disease type description</label>
+                  <input name="type_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter disease type description" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">ID</label>
+                  <input name="type_number" type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter ID" required>
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-light">Add tuple</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

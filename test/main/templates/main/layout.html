@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <aside>
+        <img src="{% static 'main/img/logo.png' %}" alt="database logo">
+        <span class="logo"><a href="{% url 'home' %}" class="logo-link">CSCI 341</a></span>
+        <h3>Tables:</h3>
+        <ul>
+            <a href="{% url 'type' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Disease type</span></li></a>
+            <a href="{% url 'disease' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Disease</span></li></a>
+            <a href="{% url 'country' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Country</span></li></a>
+            <a href="{% url 'discover' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Discover</span></li></a>
+            <a href="{% url 'users' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Users</span></li></a>
+            <a href="{% url 'doctors' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Doctors</span></li></a>
+            <a href="{% url 'specialize' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Specialization</span></li></a>
+            <a href="{% url 'publicservant' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Public servants</span></li></a>
+            <a href="{% url 'record' %}"><li><img src="{% static 'main/img/folder.svg' %}" alt="folder" class="folder"><span class="fol">Records</span></li></a>
+        </ul>
+        
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

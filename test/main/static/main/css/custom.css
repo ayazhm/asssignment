@@ -1,0 +1,58 @@
+.table{
+    width: 72%;
+    margin: auto;
+    color: #2c2c2c;
+    font-size: 13px;
+    margin-left: 24%;
+}
+table.table tr td:last-child, table.table tr th:last-child{
+    width: 25px;
+}
+table.table tr th:nth-last-child(2), table.table tr td:nth-last-child(2){
+     width: 25px;
+}
+
+table img{
+    opacity: 0.6;
+}
+
+main h2{
+    color: #2c2c2c;
+    font-size: 24px;
+    margin-bottom: 25px;
+
+}
+
+.first{
+    padding-top: 100px;
+    margin-bottom: 65px;
+}
+.btn_o{
+
+    height: 33px;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 5px;
+}
+
+.row{
+    width: 72%;
+    margin-left: 24%;
+    padding-bottom: 80px;
+}
+
+.btn_s{
+    height: 35px;
+    width: 100px;
+}
+
+.intro a{
+    text-decoration: none;
+    color: #363445;
+}
+
+.modal-content{
+    color: #363445;
+    background: #e2e2e2;
+}
+
